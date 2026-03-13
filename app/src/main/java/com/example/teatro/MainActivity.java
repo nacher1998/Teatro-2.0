@@ -156,6 +156,12 @@ public class MainActivity extends AppCompatActivity {
                                 String storedPassword = array.getJSONObject(0).getString("password");
                                 if (BCrypt.checkpw(password, storedPassword)) {
                                     tvEstado.setText("Login correcto ✅");
+
+                                    // ✅ Start SeatSelectionActivity from MainActivity
+                                    Intent intent = new Intent(MainActivity.this, SeatSelectionActivity.class);
+                                    startActivity(intent);
+                                    finish(); // Optional: prevents going back to login
+
                                 } else {
                                     tvEstado.setText("Contraseña incorrecta ❌");
                                 }
@@ -174,8 +180,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    // Update UI safely
+    // Helper to safely update the status TextView
     private void actualizarTexto(String texto) {
         runOnUiThread(() -> tvEstado.setText(texto));
     }

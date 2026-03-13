@@ -41,6 +41,7 @@
             android:name=".DetalleEventoActivity"
             android:exported="false"
             android:theme="@style/Theme.Teatro" />
+        <activity android:name=".SeatSelectionActivity"/>
 
     </application>
 

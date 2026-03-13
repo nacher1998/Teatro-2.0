@@ -1,72 +1,90 @@
 package com.example.teatro.model;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.teatro.R;
-import com.example.teatro.model.Seat;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SeatAdapter extends RecyclerView.Adapter<SeatAdapter.SeatViewHolder> {
 
-    private List<Seat> seatList;
+    public interface OnSeatSelectedListener {
+        void onSelectionChanged(List<Seat> selectedSeats);
+    }
 
-    public SeatAdapter(List<Seat> seatList) {
+    private final List<Seat> seatList;
+    private final OnSeatSelectedListener listener;
+
+    public SeatAdapter(List<Seat> seatList, OnSeatSelectedListener listener) {
         this.seatList = seatList;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public SeatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_seat, parent, false);
+
+        int screenWidth = parent.getContext().getResources().getDisplayMetrics().widthPixels;
+        int cellSize = screenWidth / 10;
+        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(cellSize, cellSize);
+        view.setLayoutParams(params);
 
         return new SeatViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SeatViewHolder holder, int position) {
-
         Seat seat = seatList.get(position);
+        holder.buttonSeat.setText(seat.getFila() + "\n" + seat.getNumero());
 
-        holder.buttonSeat.setText(seat.getFila() + "-" + seat.getNumero());
-
+        // Use drawable backgrounds — rounded corners match the app style
         switch (seat.getEstado()) {
-
             case "disponible":
-                holder.buttonSeat.setBackgroundColor(Color.GREEN);
+                holder.buttonSeat.setBackground(
+                        ContextCompat.getDrawable(holder.buttonSeat.getContext(), R.drawable.bg_seat_available));
                 holder.buttonSeat.setEnabled(true);
+                holder.buttonSeat.setAlpha(1f);
                 break;
-
             case "vendido":
-                holder.buttonSeat.setBackgroundColor(Color.RED);
+                holder.buttonSeat.setBackground(
+                        ContextCompat.getDrawable(holder.buttonSeat.getContext(), R.drawable.bg_seat_sold));
                 holder.buttonSeat.setEnabled(false);
+                holder.buttonSeat.setAlpha(0.5f);
                 break;
-
             case "seleccionado":
-                holder.buttonSeat.setBackgroundColor(Color.BLUE);
+                holder.buttonSeat.setBackground(
+                        ContextCompat.getDrawable(holder.buttonSeat.getContext(), R.drawable.bg_seat_selected));
                 holder.buttonSeat.setEnabled(true);
+                holder.buttonSeat.setAlpha(1f);
+                break;
+            default:
+                holder.buttonSeat.setAlpha(0.3f);
+                holder.buttonSeat.setEnabled(false);
                 break;
         }
 
         holder.buttonSeat.setOnClickListener(v -> {
+            int adapterPos = holder.getAdapterPosition();
+            if (adapterPos == RecyclerView.NO_ID) return;
 
-            if (seat.getEstado().equals("disponible")) {
+            if ("disponible".equals(seat.getEstado())) {
                 seat.setEstado("seleccionado");
-            }
-            else if (seat.getEstado().equals("seleccionado")) {
+            } else if ("seleccionado".equals(seat.getEstado())) {
                 seat.setEstado("disponible");
             }
+            notifyItemChanged(adapterPos);
 
-            notifyItemChanged(position);
+            if (listener != null) listener.onSelectionChanged(getSelectedSeats());
         });
     }
 
@@ -75,9 +93,16 @@ public class SeatAdapter extends RecyclerView.Adapter<SeatAdapter.SeatViewHolder
         return seatList.size();
     }
 
-    public static class SeatViewHolder extends RecyclerView.ViewHolder {
+    public List<Seat> getSelectedSeats() {
+        List<Seat> selected = new ArrayList<>();
+        for (Seat s : seatList) {
+            if ("seleccionado".equals(s.getEstado())) selected.add(s);
+        }
+        return selected;
+    }
 
-        Button buttonSeat;
+    public static class SeatViewHolder extends RecyclerView.ViewHolder {
+        AppCompatButton buttonSeat;
 
         public SeatViewHolder(@NonNull View itemView) {
             super(itemView);

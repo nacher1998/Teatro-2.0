@@ -14,23 +14,9 @@ public class Seat {
         this.estado = estado;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public int getFila() {
-        return fila;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+    public String getId() { return id; }
+    public int getFila() { return fila; }
+    public int getNumero() { return numero; }
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
 }
