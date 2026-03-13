@@ -1,5 +1,5 @@
 package com.example.teatro;
-
+import android.util.Log;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import org.mindrot.jbcrypt.BCrypt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -81,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
         String url = SUPABASE_URL + "/rest/v1/usuarios";
 
-        String json = "{ \"email\": \"" + email + "\", \"password\": \"" + password + "\" }";
+        String hashedPassword=BCrypt.hashpw(password, BCrypt.gensalt());
+
+        String json = "{ \"email\": \"" + email + "\", \"password\": \"" + hashedPassword + "\" }";
 
         RequestBody body = RequestBody.create(
                 json,
@@ -115,49 +118,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // ================= LOGIN =================
-
     private void loginUsuario(String email, String password) {
-
         String url;
         try {
-            // Case-insensitive email + URL encode
             String emailEncoded = URLEncoder.encode(email, "UTF-8");
-            String passwordEncoded = URLEncoder.encode(password, "UTF-8");
-
-            url = SUPABASE_URL + "/rest/v1/usuarios?email=ilike." + emailEncoded + "&password=eq." + passwordEncoded;
-
+            url = SUPABASE_URL + "/rest/v1/usuarios?email=eq." + emailEncoded;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-            actualizarTexto("Error codificando email/password");
-            return; // stop execution if encoding fails
+            actualizarTexto("Error codificando email");
+            return;
         }
 
         Request request = new Request.Builder()
                 .url(url)
                 .addHeader("apikey", SUPABASE_KEY)
                 .addHeader("Authorization", "Bearer " + SUPABASE_KEY)
+                .addHeader("Accept", "application/json")
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                Log.e("LOGIN_RESPONSE", "Connection error: " + e.getMessage());
                 actualizarTexto("Error conexión: " + e.getMessage());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String bodyText = response.body() != null ? response.body().string() : "";
+                Log.d("LOGIN_RESPONSE", "Body: " + bodyText);
 
                 runOnUiThread(() -> {
-                    Toast.makeText(MainActivity.this,
-                            "Login code: " + response.code() + "\nBody: " + bodyText,
-                            Toast.LENGTH_LONG).show();
-
                     if (response.isSuccessful()) {
                         try {
                             JSONArray array = new JSONArray(bodyText);
                             if (array.length() > 0) {
-                                tvEstado.setText("Login correcto ✅");
+                                String storedPassword = array.getJSONObject(0).getString("password");
+                                if (BCrypt.checkpw(password, storedPassword)) {
+                                    tvEstado.setText("Login correcto ✅");
+                                } else {
+                                    tvEstado.setText("Contraseña incorrecta ❌");
+                                }
                             } else {
                                 tvEstado.setText("Usuario no encontrado ❌");
                             }

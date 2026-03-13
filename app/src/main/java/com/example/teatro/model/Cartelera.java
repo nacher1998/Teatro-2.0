@@ -1,3 +1,5 @@
+package com.example.teatro.model;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Cartelera {
