@@ -36,11 +36,11 @@
         <activity
             android:name=".EventosActivity"
             android:exported="false"
-            android:theme="@style/Theme.Teatro" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".DetalleEventoActivity"
             android:exported="false"
-            android:theme="@style/Theme.Teatro" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".SeatSelectionActivity"/>
 
     </application>

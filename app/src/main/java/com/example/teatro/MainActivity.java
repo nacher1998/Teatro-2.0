@@ -8,6 +8,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.mindrot.jbcrypt.BCrypt;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -74,6 +78,20 @@ public class MainActivity extends AppCompatActivity {
             tvEstado.setText("Verificando...");
             loginUsuario(email, password);
         });
+        // 1. Buscamos el elemento que servirá como botón
+        // SUSTITUYE 'tu_boton_eventos' por el ID de tu diseño
+        View btnIrAEventos = findViewById(R.id.evento1);
+
+        // 2. Le damos la orden de ir a la siguiente pantalla
+        if (btnIrAEventos != null) {
+            btnIrAEventos.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, EventosActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     // ================= REGISTER =================
