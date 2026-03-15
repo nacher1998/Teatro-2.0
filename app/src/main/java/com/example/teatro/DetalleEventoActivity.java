@@ -1,5 +1,6 @@
 package com.example.teatro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,16 +52,14 @@ public class DetalleEventoActivity extends AppCompatActivity {
         btnBackTop.setOnClickListener(volverListener);
 
         // 4. Lógica del botón AVANZAR (Elegir Asiento)
+        btnElegirAsiento = findViewById(R.id.btnElegirAsiento);
+
         btnElegirAsiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Como aún no la vamos a hacer, mostramos un mensaje temporal (Toast)
-                Toast.makeText(DetalleEventoActivity.this, "Pantalla de asientos en construcción", Toast.LENGTH_SHORT).show();
-
-                /* Cuando la tengas, el código será así:
-                Intent intent = new Intent(DetalleEventoActivity.this, AsientosActivity.class);
+                // Borramos el Toast y ponemos el Intent hacia tu SeatSelectionActivity
+                Intent intent = new Intent(DetalleEventoActivity.this, SeatSelectionActivity.class);
                 startActivity(intent);
-                */
             }
         });
     }

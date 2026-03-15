@@ -8,17 +8,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LandingActivity extends AppCompatActivity {
 
-    Button btnStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
-        btnStart = findViewById(R.id.btnStart);
+        Button btnIrCartelera = findViewById(R.id.btnStart);
 
-        btnStart.setOnClickListener(v -> {
-            Intent intent = new Intent(LandingActivity.this, MainActivity.class);
+        btnIrCartelera.setOnClickListener(v -> {
+            Intent intent = new Intent(LandingActivity.this, EventosActivity.class);
             startActivity(intent);
         });
     }
