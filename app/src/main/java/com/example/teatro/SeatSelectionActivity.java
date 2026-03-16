@@ -1,5 +1,6 @@
 package com.example.teatro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -52,10 +53,26 @@ public class SeatSelectionActivity extends AppCompatActivity {
                 Toast.makeText(this, "Selecciona al menos un asiento", Toast.LENGTH_SHORT).show();
                 return;
             }
-            StringBuilder sb = new StringBuilder("Asientos: ");
-            for (Seat s : currentSelection) sb.append(s.getFila()).append("-").append(s.getNumero()).append("  ");
-            Toast.makeText(this, sb.toString(), Toast.LENGTH_LONG).show();
-            // TODO: pass currentSelection to payment/checkout screen
+
+            // Build seat string e.g. "2-5  3-7  4-1"
+            StringBuilder sb = new StringBuilder();
+            for (Seat s : currentSelection) {
+                sb.append(s.getFila()).append("-").append(s.getNumero()).append("  ");
+            }
+
+            // Get event details passed from DetalleEventoActivity (with fallbacks)
+            String eventName = getIntent().getStringExtra("EVENT_NAME");
+            String eventDate = getIntent().getStringExtra("EVENT_DATE");
+            final String finalEventName = (eventName != null) ? eventName : "Obra de Teatro";
+            final String finalEventDate = (eventDate != null) ? eventDate : "15 Jul 2025 · 20:00";
+
+            // Navigate to ConfirmBookingActivity
+            Intent intent = new Intent(SeatSelectionActivity.this, ConfirmBookingActivity.class);
+            intent.putExtra("EVENT_NAME", finalEventName);
+            intent.putExtra("EVENT_DATE", finalEventDate);
+            intent.putExtra("SELECTED_SEATS", sb.toString().trim());
+            intent.putExtra("SEAT_COUNT", currentSelection.size());
+            startActivity(intent);
         });
     }
 

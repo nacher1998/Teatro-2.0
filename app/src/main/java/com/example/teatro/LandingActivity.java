@@ -17,7 +17,7 @@ public class LandingActivity extends AppCompatActivity {
         Button btnIrCartelera = findViewById(R.id.btnStart);
 
         btnIrCartelera.setOnClickListener(v -> {
-            Intent intent = new Intent(LandingActivity.this, EventosActivity.class);
+            Intent intent = new Intent(LandingActivity.this, MainActivity.class);
             startActivity(intent);
         });
     }

@@ -78,20 +78,8 @@ public class MainActivity extends AppCompatActivity {
             tvEstado.setText("Verificando...");
             loginUsuario(email, password);
         });
-        // 1. Buscamos el elemento que servirá como botón
-        // SUSTITUYE 'tu_boton_eventos' por el ID de tu diseño
-        View btnIrAEventos = findViewById(R.id.evento1);
 
-        // 2. Le damos la orden de ir a la siguiente pantalla
-        if (btnIrAEventos != null) {
-            btnIrAEventos.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, EventosActivity.class);
-                    startActivity(intent);
-                }
-            });
-        }
+
     }
 
     // ================= REGISTER =================
@@ -175,8 +163,7 @@ public class MainActivity extends AppCompatActivity {
                                 if (BCrypt.checkpw(password, storedPassword)) {
                                     tvEstado.setText("Login correcto ✅");
 
-                                    // ✅ Start SeatSelectionActivity from MainActivity
-                                    Intent intent = new Intent(MainActivity.this, SeatSelectionActivity.class);
+                                    Intent intent = new Intent(MainActivity.this, EventosActivity.class);
                                     startActivity(intent);
                                     finish(); // Optional: prevents going back to login
 

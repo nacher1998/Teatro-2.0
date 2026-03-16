@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_confirm_booking.xml
+    Layout for the booking confirmation / payment summary screen.
+    Colour palette and style mirror the app's Login screen (dark bg + dark-red card).
+-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1A1A1A"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="40dp"
+        android:paddingBottom="32dp"
+        android:paddingHorizontal="20dp">
+
+        <!-- App logo / title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ticket\nTeatro"
+            android:textSize="36sp"
+            android:textColor="#C0392B"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:lineSpacingMultiplier="0.9"
+            android:layout_marginBottom="28dp"/>
+
+        <!-- ─── Main card ─── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_dark_red"
+            android:padding="24dp">
+
+            <!-- Card heading -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirmar Reserva"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Revisa los detalles antes de pagar"
+                android:textSize="13sp"
+                android:textColor="#FFCCCC"
+                android:gravity="center"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#80FFFFFF"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Row: Event name -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Evento"
+                    android:textColor="#FFCCCC"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tvConfirmEventName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="—"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:gravity="end"/>
+            </LinearLayout>
+
+            <!-- Row: Date -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fecha"
+                    android:textColor="#FFCCCC"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tvConfirmEventDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="—"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:gravity="end"/>
+            </LinearLayout>
+
+            <!-- Row: Seat count -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cantidad"
+                    android:textColor="#FFCCCC"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tvConfirmSeatCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="—"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:gravity="end"/>
+            </LinearLayout>
+
+            <!-- Row: Selected seats -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Asientos"
+                    android:textColor="#FFCCCC"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tvConfirmSeats"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="—"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:gravity="end"/>
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#80FFFFFF"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Total price (large) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="28dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TOTAL"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/tvConfirmTotalPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="—"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:gravity="end"/>
+            </LinearLayout>
+
+            <!-- Confirm button -->
+            <Button
+                android:id="@+id/btnConfirmBooking"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Confirmar Reserva"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:backgroundTint="#C0392B"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Back button -->
+            <Button
+                android:id="@+id/btnConfirmBack"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Volver a Asientos"
+                android:textColor="#C0392B"
+                android:textSize="15sp"
+                android:backgroundTint="#FFFFFF"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

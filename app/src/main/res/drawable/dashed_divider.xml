@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    dashed_divider.xml
+    Dashed horizontal line that mimics a real ticket's perforated tear strip.
+    Place in res/drawable/
+    NOTE: To render dashes correctly on hardware-accelerated canvases you may
+    need to set android:layerType="software" on the View that uses this drawable.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="line">
+
+    <stroke
+        android:width="2dp"
+        android:color="#80FFFFFF"
+        android:dashWidth="8dp"
+        android:dashGap="6dp" />
+
+</shape>

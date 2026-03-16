@@ -1,5 +1,6 @@
 package com.example.teatro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -102,21 +103,20 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) {
-                String bodyText = "";
-                try {
-                    bodyText = response.body() != null ? response.body().string() : "";
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
-                String message = "Código: " + response.code() + "\nCuerpo: " + bodyText;
-
-                // Show Toast on UI thread
                 runOnUiThread(() -> {
-                    Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_LONG).show();
 
-                    // Optional: also update the TextView
-                    tvEstado.setText(message);
+                    if (response.isSuccessful()) {
+
+                        // Go to Cartelera
+                        Intent intent = new Intent(RegisterActivity.this, EventosActivity.class);
+                        startActivity(intent);
+                        finish();
+
+                    } else {
+                        tvEstado.setText("Error al registrar: " + response.code());
+                    }
+
                 });
             }
 

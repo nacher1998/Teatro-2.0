@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_my_tickets.xml
+    Main layout for MyTicketsActivity. A simple dark screen with a header
+    and a RecyclerView that lists ticket cards.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1A1A1A">
+
+    <!-- ─── Header ─── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingTop="40dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ticket\nTeatro"
+            android:textSize="36sp"
+            android:textColor="#C0392B"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:lineSpacingMultiplier="0.9"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mis Entradas"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- ─── Ticket list ─── -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMyTickets"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false"/>
+
+    <!-- ─── Footer: back button ─── -->
+    <Button
+        android:id="@+id/btnMyTicketsBack"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Ver Cartelera"
+        android:textColor="#C0392B"
+        android:backgroundTint="#FFFFFF"/>
+
+</LinearLayout>

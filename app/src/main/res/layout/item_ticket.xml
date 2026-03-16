@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_ticket.xml
+    A single ticket card used by MyTicketsAdapter inside the RecyclerView.
+    Mirrors the app's dark-red card aesthetic.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card_dark_red"
+    android:padding="20dp"
+    android:layout_marginBottom="16dp">
+
+    <!-- Booking reference + event name row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvItemTicketName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Obra de Teatro"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tvItemTicketRef"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ref: TT-00001"
+            android:textColor="#FFCCCC"
+            android:textSize="11sp"/>
+    </LinearLayout>
+
+    <!-- Date -->
+    <TextView
+        android:id="@+id/tvItemTicketDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="15 Jul 2025 · 20:00"
+        android:textColor="#FFCCCC"
+        android:textSize="13sp"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- Seats -->
+    <TextView
+        android:id="@+id/tvItemTicketSeats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="A-3  A-4"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- Total price -->
+    <TextView
+        android:id="@+id/tvItemTicketPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="37.00 €"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Dashed divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/dashed_divider"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- QR code -->
+    <ImageView
+        android:id="@+id/ivItemTicketQr"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:background="#FFFFFF"
+        android:padding="6dp"
+        android:contentDescription="Código QR"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Download PDF button -->
+    <Button
+        android:id="@+id/btnItemDownloadPdf"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="Descargar PDF"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:backgroundTint="#C0392B"/>
+
+</LinearLayout>

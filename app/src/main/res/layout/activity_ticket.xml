@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_ticket.xml
+    Ticket / booking success screen.
+    Shows booking ref, event details, a QR code and action buttons.
+-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1A1A1A"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="40dp"
+        android:paddingBottom="32dp"
+        android:paddingHorizontal="20dp">
+
+        <!-- App logo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ticket\nTeatro"
+            android:textSize="36sp"
+            android:textColor="#C0392B"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:lineSpacingMultiplier="0.9"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Success badge -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✓ ¡Reserva Confirmada!"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="@drawable/bg_success_badge"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- ─── Ticket card ─── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_dark_red"
+            android:padding="24dp">
+
+            <!-- Booking reference -->
+            <TextView
+                android:id="@+id/tvTicketBookingRef"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ref: TT-00001"
+                android:textSize="13sp"
+                android:textColor="#FFCCCC"
+                android:gravity="center"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#80FFFFFF"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Event name -->
+            <TextView
+                android:id="@+id/tvTicketEventName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Obra de Teatro"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="6dp"/>
+
+            <!-- Date -->
+            <TextView
+                android:id="@+id/tvTicketEventDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="15 Jul 2025 · 20:00"
+                android:textSize="14sp"
+                android:textColor="#FFCCCC"
+                android:gravity="center"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Seats -->
+            <TextView
+                android:id="@+id/tvTicketSeats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A-3  A-4"
+                android:textSize="14sp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Total price -->
+            <TextView
+                android:id="@+id/tvTicketTotalPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="37.00 €"
+                android:textSize="22sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Perforated divider (dashed line mimicking a real ticket tear) -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/dashed_divider"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- QR code image -->
+            <ImageView
+                android:id="@+id/ivTicketQr"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                android:background="#FFFFFF"
+                android:padding="8dp"
+                android:contentDescription="Código QR del ticket"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Presenta este código en taquilla"
+                android:textSize="11sp"
+                android:textColor="#FFCCCC"
+                android:gravity="center"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Download PDF button -->
+            <Button
+                android:id="@+id/btnTicketDownloadPdf"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Descargar PDF"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:backgroundTint="#C0392B"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Back to Cartelera button -->
+            <Button
+                android:id="@+id/btnTicketBackCartelera"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Ver Cartelera"
+                android:textColor="#C0392B"
+                android:backgroundTint="#FFFFFF"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_payment.xml
+    Mock payment screen with card number, holder name, expiry, and CVV fields.
+    Matches the app's dark background + dark-red card aesthetic.
+-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1A1A1A"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="40dp"
+        android:paddingBottom="32dp"
+        android:paddingHorizontal="20dp">
+
+        <!-- App logo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ticket\nTeatro"
+            android:textSize="36sp"
+            android:textColor="#C0392B"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:lineSpacingMultiplier="0.9"
+            android:layout_marginBottom="28dp"/>
+
+        <!-- ─── Card ─── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#8B2727"
+            android:padding="24dp">
+
+            <!-- Heading -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pago con Tarjeta"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Introduce los datos de tu tarjeta"
+                android:textSize="13sp"
+                android:textColor="#FFCCCC"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Total to pay -->
+            <TextView
+                android:id="@+id/tvPaymentTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="37.00 €"
+                android:textSize="32sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#80FFFFFF"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Card number -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Número de tarjeta"
+                android:textColor="#FFCCCC"
+                android:textSize="12sp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etCardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="1234 5678 9012 3456"
+                android:textColor="#1A1A1A"
+                android:background="#F5F5F5"
+                android:paddingHorizontal="16dp"
+                android:inputType="number"
+                android:maxLength="19"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Cardholder name -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Titular de la tarjeta"
+                android:textColor="#FFCCCC"
+                android:textSize="12sp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etCardHolder"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="NOMBRE APELLIDO"
+                android:textColor="#1A1A1A"
+                android:background="#F5F5F5"
+                android:paddingHorizontal="16dp"
+                android:inputType="textCapCharacters"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Expiry + CVV row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp">
+
+                <!-- Expiry -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Caducidad"
+                        android:textColor="#FFCCCC"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="4dp"/>
+
+                    <EditText
+                        android:id="@+id/etExpiry"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="MM/AA"
+                        android:textColor="#1A1A1A"
+                        android:background="#F5F5F5"
+                        android:paddingHorizontal="16dp"
+                        android:inputType="phone"
+                        android:maxLength="5"/>
+                </LinearLayout>
+
+                <!-- CVV -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CVV"
+                        android:textColor="#FFCCCC"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="4dp"/>
+
+                    <EditText
+                        android:id="@+id/etCvv"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:hint="123"
+                        android:textColor="#1A1A1A"
+                        android:background="#F5F5F5"
+                        android:paddingHorizontal="16dp"
+                        android:inputType="numberPassword"
+                        android:maxLength="4"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Mock notice -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🔒  Pago simulado · No se realizará ningún cargo real"
+                android:textSize="11sp"
+                android:textColor="#FFCCCC"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Pay button -->
+            <Button
+                android:id="@+id/btnPay"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Pagar"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:backgroundTint="#C0392B"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Back button -->
+            <Button
+                android:id="@+id/btnPaymentBack"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Volver"
+                android:textColor="#C0392B"
+                android:backgroundTint="#FFFFFF"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
