@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Jue, 17 Agosto"
+            android:id="@+id/tvCabeceraFecha"
             android:textColor="#FFFFFF"
             android:textSize="28sp" />
 
@@ -51,37 +51,22 @@
             android:layout_marginBottom="16dp"
             android:background="@color/highlight_red" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="August 2025"
-            android:textColor="@color/highlight_red"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp"/>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="12dp">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvMesActual"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="August 2025"
-                    android:textColor="@color/highlight_red"
-                    android:textSize="14sp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" ▼"
-                    android:textColor="@color/highlight_red"
-                    android:textSize="10sp" />
-            </LinearLayout>
+                android:text="Agosto 2024"
+                android:textColor="@color/highlight_red"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -89,62 +74,53 @@
                 android:layout_alignParentEnd="true"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/btnMesAnterior"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
                     android:text="‹"
                     android:textColor="@color/highlight_red"
-                    android:textSize="24sp"
-                    android:paddingHorizontal="12dp"/>
+                    android:textSize="30sp"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/btnMesSiguiente"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
                     android:text="›"
                     android:textColor="@color/highlight_red"
-                    android:textSize="24sp"
-                    android:paddingHorizontal="12dp"/>
+                    android:textSize="30sp"/>
             </LinearLayout>
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="D" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="L" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="M" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="X" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="J" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="V" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="#FFF"/>
+        </LinearLayout>
+
         <GridLayout
+            android:id="@+id/gridCalendario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:columnCount="7"
-            android:rowCount="6"
-            android:paddingBottom="24dp">
-
-            <TextView style="@style/CalendarDayHeader" android:text="S" />
-            <TextView style="@style/CalendarDayHeader" android:text="M" />
-            <TextView style="@style/CalendarDayHeader" android:text="T" />
-            <TextView style="@style/CalendarDayHeader" android:text="W" />
-            <TextView style="@style/CalendarDayHeader" android:text="T" />
-            <TextView style="@style/CalendarDayHeader" android:text="F" />
-            <TextView style="@style/CalendarDayHeader" android:text="S" />
-
-            <TextView style="@style/CalendarDayNumber" android:text="" />
-            <TextView style="@style/CalendarDayNumber" android:text="" />
-            <TextView style="@style/CalendarDayNumber" android:text="1" />
-            <TextView style="@style/CalendarDayNumber" android:text="2" />
-            <TextView style="@style/CalendarDayNumber" android:text="3" />
-            <TextView style="@style/CalendarDayNumber" android:text="4" />
-            <TextView style="@style/CalendarDayNumber" android:id="@+id/day5" android:text="5" android:background="@drawable/circle_border"/>
-
-            <TextView style="@style/CalendarDayNumber" android:text="6" />
-            <TextView style="@style/CalendarDayNumber" android:text="7" />
-            <TextView style="@style/CalendarDayNumber" android:text="8" />
-            <TextView style="@style/CalendarDayNumber" android:text="9" />
-            <TextView style="@style/CalendarDayNumber" android:text="10" />
-            <TextView style="@style/CalendarDayNumber" android:text="11" />
-            <TextView style="@style/CalendarDayNumber" android:text="12" />
-
-            <TextView style="@style/CalendarDayNumber" android:text="13" />
-            <TextView style="@style/CalendarDayNumber" android:text="14" />
-            <TextView style="@style/CalendarDayNumber" android:text="15" />
-            <TextView style="@style/CalendarDayNumber" android:text="16" />
-            <TextView style="@style/CalendarDayNumber" android:text="17" android:textColor="#FFFFFF" android:background="@drawable/circle_fill"/>
-            <TextView style="@style/CalendarDayNumber" android:text="18" />
-            <TextView style="@style/CalendarDayNumber" android:text="19" />
-
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp">
         </GridLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutEventos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
 
         <include android:id="@+id/evento1" layout="@layout/item_evento" />
         <include android:id="@+id/evento2" layout="@layout/item_evento" />
