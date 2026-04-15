@@ -115,6 +115,14 @@
             android:layout_marginBottom="24dp">
         </GridLayout>
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+        />
+
         <LinearLayout
             android:id="@+id/layoutEventos"
             android:layout_width="match_parent"

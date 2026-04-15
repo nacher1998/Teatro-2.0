@@ -45,4 +45,6 @@ dependencies {
     // ZXing QR code generation
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
     implementation 'com.google.zxing:core:3.5.1'
+    // Glide — carga de imágenes desde URL
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
 }

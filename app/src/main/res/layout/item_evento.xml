@@ -14,26 +14,22 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <FrameLayout
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="16dp"
-            android:background="@color/card_icon_bg">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="→"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="20sp"/>
-        </FrameLayout>
+        <!-- Cartel del evento -->
+        <ImageView
+            android:id="@+id/ivCartelEvento"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="Cartel del evento" />
 
+        <!-- Título y subtítulo -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="12dp">
+
             <TextView
                 android:id="@+id/tvTitulo"
                 android:layout_width="wrap_content"
@@ -41,7 +37,10 @@
                 android:text="Título del evento"
                 android:textColor="@color/bg_black"
                 android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="15sp"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
             <TextView
                 android:id="@+id/tvSubtitulo"
                 android:layout_width="wrap_content"
@@ -51,11 +50,14 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
+        <!-- Hora y sala -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="end">
+
             <TextView
                 android:id="@+id/tvHora"
                 android:layout_width="wrap_content"
@@ -64,6 +66,7 @@
                 android:textColor="@color/bg_black"
                 android:textStyle="bold"
                 android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/tvSala"
                 android:layout_width="wrap_content"
@@ -73,9 +76,5 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <View
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:background="#444444" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
