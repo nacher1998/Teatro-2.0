@@ -324,6 +324,7 @@ public class EventosActivity extends AppCompatActivity {
                     intent.putExtra("CARTEL_URL",  eventoFinal.cartelUrl);
                     intent.putExtra("EVENT_NAME",  eventoFinal.titulo);
                     intent.putExtra("EVENT_DATE",  fechaGrande + " • " + eventoFinal.hora);
+                    intent.putExtra("FUNCION_ID", eventoFinal.id);
                     startActivity(intent);
                 });
 

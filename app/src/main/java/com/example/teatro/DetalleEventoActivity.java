@@ -57,8 +57,15 @@ public class DetalleEventoActivity extends AppCompatActivity {
         btnElegirAsiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Borramos el Toast y ponemos el Intent hacia tu SeatSelectionActivity
+
                 Intent intent = new Intent(DetalleEventoActivity.this, SeatSelectionActivity.class);
+
+                // RECIBES el ID que viene de EventosActivity
+                String funcionId = getIntent().getStringExtra("FUNCION_ID");
+
+                // LO PASAS a la siguiente pantalla (butacas)
+                intent.putExtra("FUNCION_ID", funcionId);
+
                 startActivity(intent);
             }
         });
