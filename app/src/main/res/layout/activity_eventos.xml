@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone"
-        />
+            />
 
         <LinearLayout
             android:id="@+id/layoutEventos"
@@ -130,10 +130,7 @@
             android:orientation="vertical">
         </LinearLayout>
 
-        <include android:id="@+id/evento1" layout="@layout/item_evento" />
-        <include android:id="@+id/evento2" layout="@layout/item_evento" />
-        <include android:id="@+id/evento3" layout="@layout/item_evento" />
-        <include android:id="@+id/evento4" layout="@layout/item_evento" />
+
 
     </LinearLayout>
 </ScrollView>

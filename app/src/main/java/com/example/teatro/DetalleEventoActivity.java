@@ -2,12 +2,13 @@ package com.example.teatro;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 
 public class DetalleEventoActivity extends AppCompatActivity {
 
@@ -16,58 +17,43 @@ public class DetalleEventoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_evento);
 
-        // 1. Enlazamos los componentes del XML
-        TextView tvTitulo = findViewById(R.id.tvTituloDetalle);
-        TextView tvFechaHora = findViewById(R.id.tvFechaHora);
+        TextView tvTitulo      = findViewById(R.id.tvTituloDetalle);
+        TextView tvFechaHora   = findViewById(R.id.tvFechaHora);
         TextView tvDescripcion = findViewById(R.id.tvDescripcion);
-        ImageView ivCartel = findViewById(R.id.ivCartel);
-
-        Button btnVolverAtras = findViewById(R.id.btnVolverAtras);
+        ImageView ivCartel     = findViewById(R.id.ivCartel);
+        Button btnVolverAtras  = findViewById(R.id.btnVolverAtras);
         Button btnElegirAsiento = findViewById(R.id.btnElegirAsiento);
-        View btnBackTop = findViewById(R.id.btnBackTop);
 
-        // 2. Recibimos los datos que nos envía la pantalla anterior (EventosActivity)
-        if (getIntent().getExtras() != null) {
-            String titulo = getIntent().getStringExtra("TITULO");
-            String fechaHora = getIntent().getStringExtra("FECHA_HORA");
-            String descripcion = getIntent().getStringExtra("DESCRIPCION");
+        // Recibir datos de EventosActivity
+        String titulo      = getIntent().getStringExtra("TITULO");
+        String fechaHora   = getIntent().getStringExtra("FECHA_HORA");
+        String descripcion = getIntent().getStringExtra("DESCRIPCION");
+        String cartelUrl   = getIntent().getStringExtra("CARTEL_URL");
+        String funcionId   = getIntent().getStringExtra("FUNCION_ID");
 
-            // Asignamos los textos
-            if (titulo != null) tvTitulo.setText(titulo);
-            if (fechaHora != null) tvFechaHora.setText(fechaHora);
-            if (descripcion != null) tvDescripcion.setText(descripcion);
+        if (titulo != null)      tvTitulo.setText(titulo);
+        if (fechaHora != null)   tvFechaHora.setText(fechaHora);
+        if (descripcion != null) tvDescripcion.setText(descripcion);
 
-            // Nota: Para la imagen, si guardas URLs en la BD, tendrás que usar
-            // librerías como Glide o Picasso aquí: Glide.with(this).load(url).into(ivCartel);
+        // Cargar imagen del cartel con Glide
+        if (cartelUrl != null && !cartelUrl.isEmpty()) {
+            Glide.with(this)
+                    .load(cartelUrl)
+                    .centerCrop()
+                    .placeholder(android.R.drawable.ic_menu_gallery)
+                    .into(ivCartel);
         }
 
-        // 3. Lógica del botón VOLVER (sirve para el botón de abajo y la flecha de arriba)
-        View.OnClickListener volverListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish(); // Esto destruye esta pantalla y te devuelve a la lista
-            }
-        };
-        btnVolverAtras.setOnClickListener(volverListener);
-        btnBackTop.setOnClickListener(volverListener);
+        // Botón volver
+        btnVolverAtras.setOnClickListener(v -> finish());
 
-        // 4. Lógica del botón AVANZAR (Elegir Asiento)
-        btnElegirAsiento = findViewById(R.id.btnElegirAsiento);
-
-        btnElegirAsiento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(DetalleEventoActivity.this, SeatSelectionActivity.class);
-
-                // RECIBES el ID que viene de EventosActivity
-                String funcionId = getIntent().getStringExtra("FUNCION_ID");
-
-                // LO PASAS a la siguiente pantalla (butacas)
-                intent.putExtra("FUNCION_ID", funcionId);
-
-                startActivity(intent);
-            }
+        // Botón elegir asiento
+        btnElegirAsiento.setOnClickListener(v -> {
+            Intent intent = new Intent(DetalleEventoActivity.this, SeatSelectionActivity.class);
+            intent.putExtra("FUNCION_ID", funcionId);
+            intent.putExtra("EVENT_NAME", titulo);
+            intent.putExtra("EVENT_DATE", fechaHora);
+            startActivity(intent);
         });
     }
 }
