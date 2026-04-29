@@ -35,6 +35,9 @@ public class SeatSelectionActivity extends AppCompatActivity {
     private static final int COLUMNS = 10;
     private static final int ROWS = 8;
 
+    // ── ahora campo de instancia para poder usarlo en onResume ──
+    private AppCompatButton buttonConfirm;
+
     private SeatAdapter seatAdapter;
     private List<Seat> seatList;
     private List<Seat> currentSelection = new ArrayList<>();
@@ -43,10 +46,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
 
     private final OkHttpClient client = new OkHttpClient();
 
-    // stores occupied positions (fila_numero)
     private Set<String> occupiedSeats = new HashSet<>();
-
-    // maps grid position -> butaca_id (UUID)
     private Map<String, String> seatMap = new HashMap<>();
 
     @Override
@@ -55,7 +55,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_seat_selection);
 
         RecyclerView recyclerSeats = findViewById(R.id.recyclerSeats);
-        AppCompatButton buttonConfirm = findViewById(R.id.buttonConfirm);
+        buttonConfirm = findViewById(R.id.buttonConfirm); // campo de instancia
 
         funcionId = getIntent().getStringExtra("FUNCION_ID");
         Log.d("FUNCION_ID", "FUNCION_ID = " + funcionId);
@@ -66,7 +66,6 @@ public class SeatSelectionActivity extends AppCompatActivity {
         seatList = new ArrayList<>();
 
         seatAdapter = new SeatAdapter(seatList, selected -> {
-
             currentSelection = selected;
 
             String label = selected.isEmpty()
@@ -77,8 +76,6 @@ public class SeatSelectionActivity extends AppCompatActivity {
         });
 
         recyclerSeats.setAdapter(seatAdapter);
-
-        loadSeatsFromDB(funcionId);
 
         buttonConfirm.setOnClickListener(v -> {
 
@@ -101,7 +98,6 @@ public class SeatSelectionActivity extends AppCompatActivity {
             String finalEventName = (eventName != null) ? eventName : "Obra de Teatro";
             String finalEventDate = (eventDate != null) ? eventDate : "15 Jul 2025 · 20:00";
 
-            // Collect butaca UUIDs for the PATCH in ConfirmBookingActivity
             ArrayList<String> butacaIds = new ArrayList<>();
             for (Seat s : currentSelection) {
                 if (s.getId() != null) butacaIds.add(s.getId());
@@ -113,10 +109,22 @@ public class SeatSelectionActivity extends AppCompatActivity {
             intent.putExtra("SELECTED_SEATS", sb.toString().trim());
             intent.putExtra("SEAT_COUNT", currentSelection.size());
             intent.putExtra("FUNCION_ID", funcionId);
-            intent.putStringArrayListExtra("BUTACA_IDS", butacaIds); // ✅ added
+            intent.putStringArrayListExtra("BUTACA_IDS", butacaIds);
 
             startActivity(intent);
         });
+        AppCompatButton buttonBack = findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(v -> finish());
+    }
+
+    // ── CLAVE: recargar siempre que la pantalla vuelve al primer plano ──
+    @Override
+    protected void onResume() {
+        super.onResume();
+        currentSelection.clear();
+        buttonConfirm.setText("CONFIRMAR ASIENTOS");
+
+        loadSeatsFromDB(funcionId);
     }
 
     private void loadSeatsFromDB(String funcionId) {
@@ -154,7 +162,6 @@ public class SeatSelectionActivity extends AppCompatActivity {
                 }
 
                 String body = response.body() != null ? response.body().string() : "[]";
-
                 Log.d("SEATS", "Response body: " + body);
 
                 try {
@@ -200,19 +207,10 @@ public class SeatSelectionActivity extends AppCompatActivity {
             for (int numero = 1; numero <= COLUMNS; numero++) {
 
                 String key = fila + "_" + numero;
-
                 String butacaId = seatMap.get(key);
+                String estado = occupiedSeats.contains(key) ? "vendido" : "disponible";
 
-                String estado = occupiedSeats.contains(key)
-                        ? "vendido"
-                        : "disponible";
-
-                seatList.add(new Seat(
-                        butacaId,
-                        fila,
-                        numero,
-                        estado
-                ));
+                seatList.add(new Seat(butacaId, fila, numero, estado));
             }
         }
 

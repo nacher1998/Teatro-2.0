@@ -29,7 +29,7 @@
         android:paddingBottom="12dp"
         android:paddingTop="4dp" />
 
-    <!-- Seat grid — slightly darker card to separate from background -->
+    <!-- Seat grid -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -76,22 +76,48 @@
             android:text="Vendido" android:textColor="#ffdddd" android:textSize="11sp"/>
     </LinearLayout>
 
-    <!-- Confirm button — pill shape matching the app -->
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonConfirm"
+    <!-- Buttons row -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="4dp"
-        android:padding="14dp"
-        android:text="CONFIRMAR ASIENTOS"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:background="@drawable/bg_confirm_button"
-        android:stateListAnimator="@null"
-        style="@style/Widget.AppCompat.Button" />
+        android:orientation="horizontal"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="20dp"
+        android:layout_marginTop="4dp">
+
+        <!-- Back button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonBack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:padding="14dp"
+            android:text="VOLVER"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:background="@drawable/bg_confirm_button"
+            android:stateListAnimator="@null"
+            style="@style/Widget.AppCompat.Button" />
+
+        <!-- Confirm button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonConfirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:padding="14dp"
+            android:text="CONFIRMAR ASIENTOS"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:background="@drawable/bg_confirm_button"
+            android:stateListAnimator="@null"
+            style="@style/Widget.AppCompat.Button" />
+
+    </LinearLayout>
 
 </LinearLayout>

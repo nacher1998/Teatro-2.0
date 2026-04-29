@@ -47,7 +47,6 @@ public class SeatAdapter extends RecyclerView.Adapter<SeatAdapter.SeatViewHolder
         Seat seat = seatList.get(position);
         holder.buttonSeat.setText(seat.getFila() + "\n" + seat.getNumero());
 
-        // Use drawable backgrounds — rounded corners match the app style
         switch (seat.getEstado()) {
             case "disponible":
                 holder.buttonSeat.setBackground(
@@ -75,12 +74,13 @@ public class SeatAdapter extends RecyclerView.Adapter<SeatAdapter.SeatViewHolder
 
         holder.buttonSeat.setOnClickListener(v -> {
             int adapterPos = holder.getAdapterPosition();
-            if (adapterPos == RecyclerView.NO_ID) return;
+            if (adapterPos == RecyclerView.NO_POSITION) return; // ✅ fix: NO_POSITION no NO_ID
 
-            if ("disponible".equals(seat.getEstado())) {
-                seat.setEstado("seleccionado");
-            } else if ("seleccionado".equals(seat.getEstado())) {
-                seat.setEstado("disponible");
+            Seat current = seatList.get(adapterPos); // ✅ usar adapterPos, no la lambda capturada
+            if ("disponible".equals(current.getEstado())) {
+                current.setEstado("seleccionado");
+            } else if ("seleccionado".equals(current.getEstado())) {
+                current.setEstado("disponible");
             }
             notifyItemChanged(adapterPos);
 
