@@ -4,14 +4,12 @@ plugins {
 
 android {
     namespace 'com.example.teatro'
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.example.teatro"
         minSdk 28
-        targetSdk 36
+        targetSdk 35
         versionCode 1
         versionName "1.0"
 
@@ -37,7 +35,6 @@ dependencies {
     implementation libs.constraintlayout
     implementation 'com.squareup.okhttp3:okhttp:4.12.0'
     implementation 'com.google.code.gson:gson:2.10.1'
-    implementation 'com.google.android.material:material:1.11.0'
     implementation 'org.mindrot:jbcrypt:0.4'
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

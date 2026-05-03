@@ -68,7 +68,6 @@ public class EventosActivity extends AppCompatActivity {
         tvCabeceraFecha = findViewById(R.id.tvCabeceraFecha);
         progressBar     = findViewById(R.id.progressBar); // ver nota al final
 
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
         calendarioActual  = Calendar.getInstance();
         fechaSeleccionada = Calendar.getInstance();
@@ -218,19 +217,29 @@ public class EventosActivity extends AppCompatActivity {
         Calendar mesCal = (Calendar) calendarioActual.clone();
         mesCal.set(Calendar.DAY_OF_MONTH, 1);
 
-        int primerDiaSemana = mesCal.get(Calendar.DAY_OF_WEEK) - 1;
+        int primerDiaSemana = (mesCal.get(Calendar.DAY_OF_WEEK) - 2 + 7) % 7; // Semana empieza en Lunes
         int diasEnMes       = mesCal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
         for (int i = 0; i < primerDiaSemana; i++) {
             View vacio = LayoutInflater.from(this)
                     .inflate(R.layout.item_dia_calendario, gridCalendario, false);
             ((TextView) vacio).setText("");
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+            params.width = 0;
+            params.height = GridLayout.LayoutParams.WRAP_CONTENT;
+            params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+            vacio.setLayoutParams(params);
             gridCalendario.addView(vacio);
         }
 
         for (int i = 1; i <= diasEnMes; i++) {
             View     vistaDia = LayoutInflater.from(this)
                     .inflate(R.layout.item_dia_calendario, gridCalendario, false);
+            GridLayout.LayoutParams dayParams = new GridLayout.LayoutParams();
+            dayParams.width = 0;
+            dayParams.height = GridLayout.LayoutParams.WRAP_CONTENT;
+            dayParams.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+            vistaDia.setLayoutParams(dayParams);
             TextView tvDia    = vistaDia.findViewById(R.id.tvDiaTexto);
             tvDia.setText(String.valueOf(i));
 

@@ -15,16 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp">
 
-            <TextView
-                android:id="@+id/btnBack"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@color/icon_bg_dark"
-                android:gravity="center"
-                android:text="←"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,26 +83,27 @@
             </LinearLayout>
         </RelativeLayout>
 
-        <LinearLayout
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="8dp">
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="D" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="L" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="M" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="X" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="J" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="V" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="#FFF"/>
-        </LinearLayout>
+            android:columnCount="7"
+            android:paddingBottom="8dp"
+            android:useDefaultMargins="false">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="L" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="M" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="X" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="J" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="V" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="S" android:textColor="#FFF"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="D" android:textColor="#FFF"/>
+        </GridLayout>
 
         <GridLayout
             android:id="@+id/gridCalendario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:columnCount="7"
-            android:layout_gravity="center"
+            android:useDefaultMargins="false"
             android:layout_marginBottom="24dp">
         </GridLayout>
 
