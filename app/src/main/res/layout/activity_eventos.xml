@@ -1,128 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_black"
-    android:padding="16dp">
+    android:background="@color/bg_deep"
+    android:fillViewport="false">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="52dp"
+        android:paddingBottom="32dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Próximos eventos:"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
+        <!-- Header -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:text="Cartelera"
+            android:textColor="@color/text_primary"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
             android:id="@+id/tvCabeceraFecha"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:background="@color/highlight_red" />
-
-
-
-        <RelativeLayout
+        <!-- Tarjeta del calendario -->
+        <androidx.cardview.widget.CardView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="12dp">
-
-            <TextView
-                android:id="@+id/tvMesActual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Agosto 2024"
-                android:textColor="@color/highlight_red"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_centerVertical="true"/>
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="1dp"
+            android:layout_marginBottom="20dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/btnMesAnterior"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="‹"
-                    android:textColor="@color/highlight_red"
-                    android:textSize="30sp"/>
-                <TextView
-                    android:id="@+id/btnMesSiguiente"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="›"
-                    android:textColor="@color/highlight_red"
-                    android:textSize="30sp"/>
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Navegación mes -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:id="@+id/tvMesActual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Mayo 2026"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/btnMesAnterior"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:gravity="center"
+                            android:text="‹"
+                            android:textColor="@color/accent"
+                            android:textSize="24sp"
+                            android:background="@drawable/bg_chip_inactive"/>
+
+                        <TextView
+                            android:id="@+id/btnMesSiguiente"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:gravity="center"
+                            android:text="›"
+                            android:textColor="@color/accent"
+                            android:textSize="24sp"
+                            android:background="@drawable/bg_chip_inactive"
+                            android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <!-- Cabecera días -->
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="7"
+                    android:useDefaultMargins="false">
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_columnWeight="1" android:gravity="center" android:text="L" android:textColor="@color/text_hint" android:textSize="13sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_columnWeight="1" android:gravity="center" android:text="M" android:textColor="@color/text_hint" android:textSize="13sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_columnWeight="1" android:gravity="center" android:text="X" android:textColor="@color/text_hint" android:textSize="13sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_columnWeight="1" android:gravity="center" android:text="J" android:textColor="@color/text_hint" android:textSize="13sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_columnWeight="1" android:gravity="center" android:text="V" android:textColor="@color/text_hint" android:textSize="13sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_columnWeight="1" android:gravity="center" android:text="S" android:textColor="@color/accent" android:textSize="13sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_columnWeight="1" android:gravity="center" android:text="D" android:textColor="@color/accent" android:textSize="13sp" android:textStyle="bold"/>
+                </GridLayout>
+
+                <!-- Grid días -->
+                <TableLayout
+                    android:id="@+id/gridCalendario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:shrinkColumns="*"
+                    android:stretchColumns="*"
+                    android:nestedScrollingEnabled="false"/>
+
             </LinearLayout>
-        </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="7"
-            android:paddingBottom="8dp"
-            android:useDefaultMargins="false">
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="L" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="M" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="X" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="J" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="V" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="S" android:textColor="#FFF"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="center" android:text="D" android:textColor="#FFF"/>
-        </GridLayout>
-
-        <GridLayout
-            android:id="@+id/gridCalendario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="7"
-            android:useDefaultMargins="false"
-            android:layout_marginBottom="24dp">
-        </GridLayout>
-
+        <!-- ProgressBar -->
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone"
-            />
+            android:indeterminateTint="@color/accent"
+            android:visibility="gone"/>
 
+        <!-- Lista de eventos -->
         <LinearLayout
             android:id="@+id/layoutEventos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-        </LinearLayout>
-
-
+            android:orientation="vertical"/>
 
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_black">
+    android:background="@color/bg_deep">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottomBar">
@@ -14,62 +16,79 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Imagen cartel -->
             <ImageView
                 android:id="@+id/ivCartel"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="300dp"
                 android:scaleType="centerCrop"
-                android:background="#444444" />
+                android:background="@color/bg_card"/>
 
+            <!-- Contenido -->
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp">
-
-            <TextView
-                android:id="@+id/tvTituloDetalle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre del Evento"
-                android:textColor="#FFFFFF"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
-
-            <TextView
-                android:id="@+id/tvFechaHora"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jue, 17 Agosto • 20:30"
-                android:textColor="@color/highlight_red"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="24dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sinopsis"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
-
-            <TextView
-                android:id="@+id/tvDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cargando descripción desde la base de datos..."
-                android:textColor="@color/text_gray"
-                android:textSize="15sp"
-                android:lineSpacingExtra="6dp"
-                android:layout_marginBottom="24dp"/>
-        </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+                android:orientation="vertical"
+                android:padding="24dp">
 
+                <!-- Fecha/hora badge -->
+                <TextView
+                    android:id="@+id/tvFechaHora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/accent"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:background="@drawable/bg_chip_active"
+                    android:layout_marginBottom="16dp"/>
 
+                <!-- Título -->
+                <TextView
+                    android:id="@+id/tvTituloDetalle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_primary"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:lineSpacingMultiplier="1.1"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="40dp"
+                    android:layout_height="2dp"
+                    android:background="@color/accent"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Sinopsis label -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SINOPSIS"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1"
+                    android:layout_marginBottom="10dp"/>
+
+                <!-- Descripción -->
+                <TextView
+                    android:id="@+id/tvDescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="15sp"
+                    android:lineSpacingMultiplier="1.6"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Barra inferior -->
     <LinearLayout
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
@@ -77,28 +96,32 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:background="#1A1A1A"
+        android:background="@color/bg_surface"
         android:elevation="8dp">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnVolverAtras"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:text="Volver"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="@color/icon_bg_dark"
+            android:textColor="@color/text_primary"
+            app:backgroundTint="@color/bg_card"
+            app:cornerRadius="16dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="1dp"
             android:layout_marginEnd="8dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnElegirAsiento"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="52dp"
             android:layout_weight="2"
-            android:text="Elegir Asiento"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="@color/highlight_red"
-            android:layout_marginStart="8dp"/>
-    </LinearLayout>
+            android:text="Elegir asiento"
+            android:textColor="@color/text_on_accent"
+            android:textStyle="bold"
+            app:backgroundTint="@color/accent"
+            app:cornerRadius="16dp"/>
 
+    </LinearLayout>
 </RelativeLayout>

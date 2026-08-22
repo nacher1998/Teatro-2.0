@@ -1,234 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    activity_confirm_booking.xml
-    Layout for the booking confirmation / payment summary screen.
-    Colour palette and style mirror the app's Login screen (dark bg + dark-red card).
--->
-<ScrollView
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1A1A1A"
+    android:background="@color/bg_deep"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:paddingTop="40dp"
-        android:paddingBottom="32dp"
-        android:paddingHorizontal="20dp">
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="52dp"
+        android:paddingBottom="40dp">
 
-        <!-- App logo / title -->
+        <!-- Header -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ticket\nTeatro"
-            android:textSize="36sp"
-            android:textColor="#C0392B"
-            android:fontFamily="cursive"
-            android:gravity="center"
-            android:lineSpacingMultiplier="0.9"
+            android:text="Confirmar reserva"
+            android:textColor="@color/text_primary"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Revisa los detalles antes de pagar"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
             android:layout_marginBottom="28dp"/>
 
-        <!-- ─── Main card ─── -->
-        <LinearLayout
+        <!-- Tarjeta resumen -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bg_card_dark_red"
-            android:padding="24dp">
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="1dp"
+            android:layout_marginBottom="20dp">
 
-            <!-- Card heading -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Confirmar Reserva"
-                android:textSize="20sp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_marginBottom="4dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Revisa los detalles antes de pagar"
-                android:textSize="13sp"
-                android:textColor="#FFCCCC"
-                android:gravity="center"
-                android:layout_marginBottom="24dp"/>
-
-            <!-- Divider -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#80FFFFFF"
-                android:layout_marginBottom="20dp"/>
-
-            <!-- Row: Event name -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="12dp">
+                android:orientation="vertical"
+                android:padding="24dp">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Evento"
-                    android:textColor="#FFCCCC"
-                    android:textSize="14sp"/>
+                <!-- Fila evento -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Evento" android:textColor="@color/text_secondary" android:textSize="13sp"/>
+                    <TextView android:id="@+id/tvConfirmEventName" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:text="—" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="14sp" android:gravity="end"/>
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvConfirmEventName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="—"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:gravity="end"/>
+                <!-- Fila fecha -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Fecha" android:textColor="@color/text_secondary" android:textSize="13sp"/>
+                    <TextView android:id="@+id/tvConfirmEventDate" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:text="—" android:textColor="@color/text_primary" android:textSize="13sp" android:gravity="end"/>
+                </LinearLayout>
+
+                <!-- Fila cantidad -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Cantidad" android:textColor="@color/text_secondary" android:textSize="13sp"/>
+                    <TextView android:id="@+id/tvConfirmSeatCount" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:text="—" android:textColor="@color/text_primary" android:textSize="13sp" android:gravity="end"/>
+                </LinearLayout>
+
+                <!-- Fila asientos -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="20dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Asientos" android:textColor="@color/text_secondary" android:textSize="13sp"/>
+                    <TextView android:id="@+id/tvConfirmSeats" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:text="—" android:textColor="@color/text_primary" android:textSize="13sp" android:gravity="end"/>
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/border" android:layout_marginBottom="20dp"/>
+
+                <!-- Total -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="TOTAL" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="16sp"/>
+                    <TextView android:id="@+id/tvConfirmTotalPrice" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="—" android:textColor="@color/accent" android:textStyle="bold" android:textSize="22sp" android:gravity="end"/>
+                </LinearLayout>
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <!-- Row: Date -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="12dp">
+        <!-- Botón confirmar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmBooking"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Confirmar y pagar"
+            android:textColor="@color/text_on_accent"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            app:backgroundTint="@color/accent"
+            app:cornerRadius="16dp"
+            android:layout_marginBottom="12dp"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Fecha"
-                    android:textColor="#FFCCCC"
-                    android:textSize="14sp"/>
+        <!-- Botón volver -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmBack"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Volver a asientos"
+            android:textColor="@color/text_primary"
+            app:backgroundTint="@color/bg_card"
+            app:cornerRadius="16dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="1dp"/>
 
-                <TextView
-                    android:id="@+id/tvConfirmEventDate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="—"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:gravity="end"/>
-            </LinearLayout>
-
-            <!-- Row: Seat count -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="12dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Cantidad"
-                    android:textColor="#FFCCCC"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:id="@+id/tvConfirmSeatCount"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="—"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:gravity="end"/>
-            </LinearLayout>
-
-            <!-- Row: Selected seats -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Asientos"
-                    android:textColor="#FFCCCC"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:id="@+id/tvConfirmSeats"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="—"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:gravity="end"/>
-            </LinearLayout>
-
-            <!-- Divider -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#80FFFFFF"
-                android:layout_marginBottom="16dp"/>
-
-            <!-- Total price (large) -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="28dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TOTAL"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:textSize="18sp"/>
-
-                <TextView
-                    android:id="@+id/tvConfirmTotalPrice"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="—"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:textSize="22sp"
-                    android:gravity="end"/>
-            </LinearLayout>
-
-            <!-- Confirm button -->
-            <Button
-                android:id="@+id/btnConfirmBooking"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:text="Confirmar Reserva"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                android:backgroundTint="#C0392B"
-                android:layout_marginBottom="12dp"/>
-
-            <!-- Back button -->
-            <Button
-                android:id="@+id/btnConfirmBack"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:text="Volver a Asientos"
-                android:textColor="#C0392B"
-                android:textSize="15sp"
-                android:backgroundTint="#FFFFFF"/>
-
-        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

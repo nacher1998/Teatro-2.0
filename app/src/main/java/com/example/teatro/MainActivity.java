@@ -3,7 +3,7 @@ import android.util.Log;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import com.google.android.material.button.MaterialButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +21,7 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tvEstado;
     private EditText etEmail, etPassword;
-    private Button btnLogin, btnRegister;
+    private MaterialButton btnLogin, btnRegister;
 
     private OkHttpClient client;
 
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        btnRegister = findViewById(R.id.btnRegister);
+        btnRegister = findViewById(R.id.btnGoToRegister);
 
         client = new OkHttpClient();
 

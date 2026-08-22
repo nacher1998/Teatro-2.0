@@ -42,7 +42,6 @@ public class RegisterActivity extends AppCompatActivity {
         etTelefono = findViewById(R.id.etTelefono);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
-        etRol = findViewById(R.id.etRol);
         btnRegister = findViewById(R.id.btnRegister);
         tvEstado = findViewById(R.id.tvEstado);
 

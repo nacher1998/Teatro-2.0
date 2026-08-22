@@ -1,80 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="@color/bg_deep"
+    android:fillViewport="true">
 
-    <!-- LOGO -->
-    <TextView
-        android:id="@+id/tvLogo"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ticket\nTeatro"
-        android:textColor="#C44B3A"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        android:fontFamily="cursive"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="60dp"/>
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="64dp"
+        android:paddingBottom="48dp"
+        android:paddingStart="28dp"
+        android:paddingEnd="28dp">
 
-    <!-- IMAGEN CIRCULAR -->
-    <ImageView
-        android:id="@+id/imgTeatro"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:src="@drawable/teatro"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toBottomOf="@id/tvLogo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/circle_mask"
-        android:clipToOutline="true"/>
 
-    <!-- TEXTO PRINCIPAL -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compra tus entradas de\nteatro en segundos"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toBottomOf="@id/imgTeatro"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <!-- LOGO -->
+        <TextView
+            android:id="@+id/tvLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="El Teatrillo"
+            android:textColor="@color/text_primary"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:fontFamily="cursive"
+            android:textAlignment="center"/>
 
-    <!-- SUBTEXTO -->
-    <TextView
-        android:id="@+id/tvSubtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Elige la obra, y tu asiento desde el móvil, sin colas."
-        android:textColor="#CCCCCC"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tu teatro, en tu bolsillo"
+            android:textColor="@color/text_secondary"
+            android:textSize="15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="48dp"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnStart"
-        android:layout_width="220dp"
-        android:layout_height="55dp"
-        android:text="Pulsa Aquí"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="#C44B3A"
-        app:cornerRadius="30dp"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <!-- IMAGEN circular con fondo de tarjeta -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="110dp"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="48dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imgTeatro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/teatro"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- TARJETA de propuesta de valor -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Compra tus entradas en segundos"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:lineSpacingMultiplier="1.2"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Elige la obra y tu asiento desde el móvil, sin colas ni esperas."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:lineSpacingMultiplier="1.5"
+                    android:layout_marginBottom="24dp"/>
+
+                <!-- Features -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="12dp">
+                    <TextView android:layout_width="32dp" android:layout_height="32dp" android:text="🎫" android:textSize="18sp" android:gravity="center"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Entradas con QR" android:textColor="@color/text_primary" android:textSize="14sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Descargables en PDF" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="12dp">
+                    <TextView android:layout_width="32dp" android:layout_height="32dp" android:text="💺" android:textSize="18sp" android:gravity="center"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Elige tu asiento" android:textColor="@color/text_primary" android:textSize="14sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mapa visual del teatro" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <TextView android:layout_width="32dp" android:layout_height="32dp" android:text="📅" android:textSize="18sp" android:gravity="center"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cartelera actualizada" android:textColor="@color/text_primary" android:textSize="14sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Funciones en tiempo real" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- BOTÓN PRINCIPAL -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStart"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:text="Empezar ahora"
+            android:textColor="@color/text_on_accent"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/accent"
+            app:cornerRadius="16dp"
+            android:layout_marginBottom="12dp"/>
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.GridLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 
 import com.bumptech.glide.Glide;
 
@@ -40,11 +42,12 @@ public class EventosActivity extends AppCompatActivity {
 
     // ── Supabase credentials ───────────────────────────────────────────────
     private static final String SUPABASE_URL = "https://mhofxrmxsegjzssutzru.supabase.co";
-    private static final String SUPABASE_KEY = "sb_secret_Kvssja_b25MU2zlsUAumsg_sV8pqwPQ";
+    private static final String SUPABASE_KEY = "sb_secret_Jq_Y8e09myQCEncYXxf5Rg_qBnJg3N3";
 
     // ── Views ──────────────────────────────────────────────────────────────
     private TextView     tvMesActual, tvCabeceraFecha;
-    private GridLayout   gridCalendario;
+    private TableLayout       gridCalendario;
+    private NestedScrollView  scrollView;
     private LinearLayout layoutEventos;
     private ProgressBar  progressBar;
 
@@ -64,6 +67,13 @@ public class EventosActivity extends AppCompatActivity {
 
         tvMesActual     = findViewById(R.id.tvMesActual);
         gridCalendario  = findViewById(R.id.gridCalendario);
+        scrollView      = findViewById(R.id.scrollView);
+
+        // Permitir que el NestedScrollView capture el scroll aunque el dedo esté sobre el TableLayout
+        gridCalendario.setOnTouchListener((v, event) -> {
+            scrollView.requestDisallowInterceptTouchEvent(false);
+            return false;
+        });
         layoutEventos   = findViewById(R.id.layoutEventos);
         tvCabeceraFecha = findViewById(R.id.tvCabeceraFecha);
         progressBar     = findViewById(R.id.progressBar); // ver nota al final
@@ -217,56 +227,62 @@ public class EventosActivity extends AppCompatActivity {
         Calendar mesCal = (Calendar) calendarioActual.clone();
         mesCal.set(Calendar.DAY_OF_MONTH, 1);
 
-        int primerDiaSemana = (mesCal.get(Calendar.DAY_OF_WEEK) - 2 + 7) % 7; // Semana empieza en Lunes
+        int primerDiaSemana = (mesCal.get(Calendar.DAY_OF_WEEK) - 2 + 7) % 7;
         int diasEnMes       = mesCal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
-        for (int i = 0; i < primerDiaSemana; i++) {
-            View vacio = LayoutInflater.from(this)
-                    .inflate(R.layout.item_dia_calendario, gridCalendario, false);
-            ((TextView) vacio).setText("");
-            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-            params.width = 0;
-            params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-            params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-            vacio.setLayoutParams(params);
-            gridCalendario.addView(vacio);
-        }
+        int cellHeightPx = (int) (48 * getResources().getDisplayMetrics().density);
 
-        for (int i = 1; i <= diasEnMes; i++) {
-            View     vistaDia = LayoutInflater.from(this)
-                    .inflate(R.layout.item_dia_calendario, gridCalendario, false);
-            GridLayout.LayoutParams dayParams = new GridLayout.LayoutParams();
-            dayParams.width = 0;
-            dayParams.height = GridLayout.LayoutParams.WRAP_CONTENT;
-            dayParams.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-            vistaDia.setLayoutParams(dayParams);
-            TextView tvDia    = vistaDia.findViewById(R.id.tvDiaTexto);
-            tvDia.setText(String.valueOf(i));
+        // Construir array de todas las celdas: vacíos + días
+        int totalCeldas = primerDiaSemana + diasEnMes;
+        int totalFilas  = (int) Math.ceil(totalCeldas / 7.0);
 
-            final int diaSeleccionado = i;
+        for (int fila = 0; fila < totalFilas; fila++) {
+            TableRow row = new TableRow(this);
+            row.setLayoutParams(new TableLayout.LayoutParams(
+                    TableLayout.LayoutParams.MATCH_PARENT,
+                    cellHeightPx));
 
-            boolean esSeleccionado =
-                    diaSeleccionado == fechaSeleccionada.get(Calendar.DAY_OF_MONTH) &&
-                            calendarioActual.get(Calendar.MONTH) == fechaSeleccionada.get(Calendar.MONTH) &&
-                            calendarioActual.get(Calendar.YEAR)  == fechaSeleccionada.get(Calendar.YEAR);
+            for (int col = 0; col < 7; col++) {
+                int celda = fila * 7 + col;
+                int dia   = celda - primerDiaSemana + 1;
 
-            if (esSeleccionado) {
-                tvDia.setBackgroundResource(R.drawable.circle_fill);
-                tvDia.setTextColor(Color.WHITE);
-            } else {
-                tvDia.setBackgroundColor(Color.TRANSPARENT);
-                tvDia.setTextColor(Color.parseColor("#AAAAAA"));
+                TextView tvDia = new TextView(this);
+                TableRow.LayoutParams lp = new TableRow.LayoutParams(0, cellHeightPx, 1f);
+                tvDia.setLayoutParams(lp);
+                tvDia.setGravity(android.view.Gravity.CENTER);
+                tvDia.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, 15);
+
+                if (celda < primerDiaSemana || dia > diasEnMes) {
+                    // Celda vacía
+                    tvDia.setText("");
+                } else {
+                    tvDia.setText(String.valueOf(dia));
+
+                    boolean esSeleccionado =
+                            dia == fechaSeleccionada.get(Calendar.DAY_OF_MONTH) &&
+                                    calendarioActual.get(Calendar.MONTH) == fechaSeleccionada.get(Calendar.MONTH) &&
+                                    calendarioActual.get(Calendar.YEAR)  == fechaSeleccionada.get(Calendar.YEAR);
+
+                    if (esSeleccionado) {
+                        tvDia.setBackgroundResource(R.drawable.bg_day_selected);
+                        tvDia.setTextColor(Color.WHITE);
+                    } else {
+                        tvDia.setBackgroundColor(android.graphics.Color.TRANSPARENT);
+                        tvDia.setTextColor(android.graphics.Color.parseColor("#DDDBE8"));
+                    }
+
+                    final int diaFinal = dia;
+                    tvDia.setOnClickListener(v -> {
+                        fechaSeleccionada.set(Calendar.YEAR,         calendarioActual.get(Calendar.YEAR));
+                        fechaSeleccionada.set(Calendar.MONTH,        calendarioActual.get(Calendar.MONTH));
+                        fechaSeleccionada.set(Calendar.DAY_OF_MONTH, diaFinal);
+                        dibujarCalendario();
+                        actualizarEventos(fechaSeleccionada);
+                    });
+                }
+                row.addView(tvDia);
             }
-
-            tvDia.setOnClickListener(v -> {
-                fechaSeleccionada.set(Calendar.YEAR,         calendarioActual.get(Calendar.YEAR));
-                fechaSeleccionada.set(Calendar.MONTH,        calendarioActual.get(Calendar.MONTH));
-                fechaSeleccionada.set(Calendar.DAY_OF_MONTH, diaSeleccionado);
-                dibujarCalendario();
-                actualizarEventos(fechaSeleccionada);
-            });
-
-            gridCalendario.addView(vistaDia);
+            gridCalendario.addView(row);
         }
     }
 
@@ -288,7 +304,7 @@ public class EventosActivity extends AppCompatActivity {
         if (!eventosListos) {
             TextView cargando = new TextView(this);
             cargando.setText("Cargando eventos...");
-            cargando.setTextColor(Color.parseColor("#AAAAAA"));
+            cargando.setTextColor(android.graphics.Color.parseColor("#9896B0"));
             cargando.setPadding(0, 50, 0, 0);
             layoutEventos.addView(cargando);
             return;
@@ -344,7 +360,7 @@ public class EventosActivity extends AppCompatActivity {
         if (!hayEventos) {
             TextView sinEventos = new TextView(this);
             sinEventos.setText("No hay funciones programadas para este día.");
-            sinEventos.setTextColor(Color.WHITE);
+            sinEventos.setTextColor(android.graphics.Color.parseColor("#9896B0"));
             sinEventos.setPadding(0, 50, 0, 0);
             layoutEventos.addView(sinEventos);
         }
