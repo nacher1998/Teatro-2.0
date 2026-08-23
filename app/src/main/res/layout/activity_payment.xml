@@ -35,84 +35,53 @@
             android:textStyle="bold"
             android:layout_marginBottom="28dp"/>
 
-        <!-- Tarjeta visual simulada -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            app:cardBackgroundColor="#1E2A3A"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            android:layout_marginBottom="28dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="24dp"
-                android:gravity="bottom">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="•••• •••• •••• ####"
-                    android:textColor="#AAFFFFFF"
-                    android:textSize="18sp"
-                    android:letterSpacing="0.1"
-                    android:fontFamily="monospace"
-                    android:layout_marginBottom="12dp"/>
-
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="TITULAR" android:textColor="#66FFFFFF" android:textSize="10sp" android:letterSpacing="0.1"/>
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="CADUCIDAD" android:textColor="#66FFFFFF" android:textSize="10sp" android:gravity="end" android:letterSpacing="0.1"/>
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
         <!-- Número tarjeta -->
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NÚMERO DE TARJETA" android:textColor="@color/text_secondary" android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
-        <EditText android:id="@+id/etCardNumber" android:layout_width="match_parent" android:layout_height="56dp" android:background="@drawable/bg_input_field" android:paddingStart="16dp" android:paddingEnd="16dp" android:hint="1234 5678 9012 3456" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" android:inputType="number" android:maxLength="19" android:fontFamily="monospace" android:layout_marginBottom="16dp"/>
+        <EditText android:id="@+id/etCardNumber" android:layout_width="match_parent" android:layout_height="60dp" android:background="@drawable/bg_input_field" android:paddingStart="16dp" android:paddingEnd="16dp" android:hint="1234 5678 9012 3456" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" android:inputType="number" android:maxLength="19" android:fontFamily="monospace" android:layout_marginBottom="16dp"/>
 
         <!-- Titular -->
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TITULAR" android:textColor="@color/text_secondary" android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
-        <EditText android:id="@+id/etCardHolder" android:layout_width="match_parent" android:layout_height="56dp" android:background="@drawable/bg_input_field" android:paddingStart="16dp" android:paddingEnd="16dp" android:hint="NOMBRE APELLIDO" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" android:inputType="textCapCharacters" android:layout_marginBottom="16dp"/>
+        <EditText android:id="@+id/etCardHolder" android:layout_width="match_parent" android:layout_height="60dp" android:background="@drawable/bg_input_field" android:paddingStart="16dp" android:paddingEnd="16dp" android:hint="NOMBRE APELLIDO" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" android:inputType="textCapCharacters" android:layout_marginBottom="16dp"/>
 
         <!-- Caducidad + CVV -->
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="28dp">
             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CADUCIDAD" android:textColor="@color/text_secondary" android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
-                <EditText android:id="@+id/etExpiry" android:layout_width="match_parent" android:layout_height="56dp" android:background="@drawable/bg_input_field" android:paddingStart="16dp" android:paddingEnd="16dp" android:hint="MM/AA" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" android:inputType="phone" android:maxLength="5"/>
+                <EditText android:id="@+id/etExpiry" android:layout_width="match_parent" android:layout_height="60dp" android:background="@drawable/bg_input_field" android:paddingStart="16dp" android:paddingEnd="16dp" android:hint="MM/AA" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" android:inputType="phone" android:maxLength="5"/>
             </LinearLayout>
             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="8dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CVV" android:textColor="@color/text_secondary" android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
-                <EditText android:id="@+id/etCvv" android:layout_width="match_parent" android:layout_height="56dp" android:background="@drawable/bg_input_field" android:paddingStart="16dp" android:paddingEnd="16dp" android:hint="•••" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" android:inputType="numberPassword" android:maxLength="4"/>
+                <EditText android:id="@+id/etCvv" android:layout_width="match_parent" android:layout_height="60dp" android:background="@drawable/bg_input_field" android:paddingStart="16dp" android:paddingEnd="16dp" android:hint="•••" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" android:inputType="numberPassword" android:maxLength="4"/>
             </LinearLayout>
         </LinearLayout>
 
         <!-- Aviso -->
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="🔒  Pago simulado · No se realizará ningún cargo real" android:textSize="12sp" android:textColor="@color/text_hint" android:gravity="center" android:layout_marginBottom="20dp"/>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnPay"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="60dp"
             android:text="Pagar ahora"
             android:textColor="@color/text_on_accent"
             android:textStyle="bold"
             android:textSize="16sp"
-            app:backgroundTint="@color/accent"
-            app:cornerRadius="16dp"
-            android:layout_marginBottom="12dp"/>
+            android:backgroundTint="@color/accent"
+            android:layout_marginBottom="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnPaymentBack"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="60dp"
             android:text="Volver"
             android:textColor="@color/text_primary"
-            app:backgroundTint="@color/bg_card"
-            app:cornerRadius="16dp"
-            app:strokeColor="@color/border"
-            app:strokeWidth="1dp"/>
+            android:backgroundTint="@color/bg_card"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

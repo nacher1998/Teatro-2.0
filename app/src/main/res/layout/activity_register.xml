@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="← Volver"
             android:textColor="@color/text_secondary"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:layout_marginBottom="28dp"/>
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="Crea tu cuenta"
             android:textColor="@color/text_primary"
-            android:textSize="20sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:layout_marginBottom="6dp"/>
 
@@ -40,8 +40,8 @@
             android:layout_height="wrap_content"
             android:text="Regístrate para empezar"
             android:textColor="@color/text_secondary"
-            android:textSize="12sp"
-            android:layout_marginBottom="36dp"/>
+            android:textSize="14sp"
+            android:layout_marginBottom="30dp"/>
 
         <!-- Nombre -->
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NOMBRE" android:textColor="@color/text_secondary" android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
@@ -67,7 +67,7 @@
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CONFIRMAR CONTRASEÑA" android:textColor="@color/text_secondary" android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
         <EditText android:id="@+id/etConfirmPassword" android:layout_width="match_parent" android:layout_height="56dp" android:background="@drawable/bg_input_field" android:paddingStart="16dp" android:paddingEnd="16dp" android:hint="••••••••" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" android:inputType="textPassword" android:textSize="15sp" android:layout_marginBottom="32dp"/>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -75,8 +75,7 @@
             android:textColor="@color/text_on_accent"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:backgroundTint="@color/accent"
-            app:cornerRadius="16dp"
+            android:backgroundTint="@color/accent"
             android:layout_marginBottom="16dp"/>
 
         <TextView

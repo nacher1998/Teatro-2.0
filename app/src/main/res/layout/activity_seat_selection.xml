@@ -108,28 +108,28 @@
         android:paddingBottom="28dp"
         android:paddingTop="4dp">
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/buttonBack"
             android:layout_width="0dp"
-            android:layout_height="52dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:text="Volver"
             android:textColor="@color/text_primary"
-            app:backgroundTint="@color/bg_card"
-            app:cornerRadius="16dp"
-            app:strokeColor="@color/border"
-            app:strokeWidth="1dp"
-            android:layout_marginEnd="8dp"/>
+            android:backgroundTint="@color/bg_card"
+            android:layout_marginEnd="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/buttonConfirm"
             android:layout_width="0dp"
-            android:layout_height="52dp"
+            android:layout_height="60dp"
             android:layout_weight="2"
             android:text="Confirmar"
             android:textColor="@color/text_on_accent"
             android:textStyle="bold"
-            app:backgroundTint="@color/accent"
-            app:cornerRadius="16dp"/>
+            android:backgroundTint="@color/accent"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
     </LinearLayout>
 </LinearLayout>

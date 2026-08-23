@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Supabase credentials (academic project)
     private static final String SUPABASE_URL = "https://mhofxrmxsegjzssutzru.supabase.co";
-    private static final String SUPABASE_KEY = "sb_secret_Jq_Y8e09myQCEncYXxf5Rg_qBnJg3N3";
+    private static final String SUPABASE_KEY = "sb_secret_-h3PWtjtvAr-GztjDooCdQ_cwth2TA_";
     private TextView tvEstado;
     private EditText etEmail, etPassword;
     private MaterialButton btnLogin, btnRegister;

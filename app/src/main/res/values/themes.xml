@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.Teatro" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Teatro" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/accent</item>
         <item name="colorPrimaryVariant">@color/accent_dark</item>
         <item name="colorSecondary">@color/accent</item>
@@ -20,7 +20,7 @@
     <style name="Theme.Teatro" parent="Base.Theme.Teatro" />
 
     <!-- BOTÓN PRIMARIO -->
-    <style name="Widget.Teatro.Button" parent="Widget.Material3.Button">
+    <style name="Widget.Teatro.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/accent</item>
         <item name="android:textColor">@color/text_on_accent</item>
         <item name="android:textStyle">bold</item>
@@ -31,14 +31,14 @@
     </style>
 
     <!-- BOTÓN SECUNDARIO (outline) -->
-    <style name="Widget.Teatro.Button.Outline" parent="Widget.Material3.Button.OutlinedButton">
+    <style name="Widget.Teatro.Button.Outline" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="strokeColor">@color/border</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="cornerRadius">16dp</item>
     </style>
 
     <!-- BOTÓN GHOST (negro con borde) -->
-    <style name="Widget.Teatro.Button.Ghost" parent="Widget.Material3.Button.OutlinedButton">
+    <style name="Widget.Teatro.Button.Ghost" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="strokeColor">@color/accent</item>
         <item name="strokeWidth">1.5dp</item>
         <item name="android:textColor">@color/accent</item>
@@ -47,7 +47,7 @@
     </style>
 
     <!-- INPUT -->
-    <style name="Widget.Teatro.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+    <style name="Widget.Teatro.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundColor">@color/bg_input</item>
         <item name="boxStrokeColor">@color/border</item>
         <item name="hintTextColor">@color/text_hint</item>
@@ -59,7 +59,7 @@
     </style>
 
     <!-- CHIP de filtro -->
-    <style name="Widget.Teatro.Chip" parent="Widget.Material3.Chip.Filter">
+    <style name="Widget.Teatro.Chip" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipBackgroundColor">@color/bg_card</item>
         <item name="chipStrokeColor">@color/border</item>
         <item name="chipStrokeWidth">1dp</item>
@@ -69,7 +69,7 @@
     </style>
 
     <!-- CARD -->
-    <style name="Widget.Teatro.Card" parent="Widget.Material3.CardView.Elevated">
+    <style name="Widget.Teatro.Card" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/bg_card</item>
         <item name="cardCornerRadius">20dp</item>
         <item name="cardElevation">0dp</item>
@@ -78,14 +78,14 @@
     </style>
 
     <!-- TOOLBAR -->
-    <style name="Widget.Teatro.Toolbar" parent="Widget.Material3.Toolbar">
+    <style name="Widget.Teatro.Toolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="android:background">@color/bg_deep</item>
         <item name="titleTextColor">@color/text_primary</item>
         <item name="subtitleTextColor">@color/text_secondary</item>
     </style>
 
     <!-- Texto título pantalla -->
-    <style name="TextAppearance.Teatro.Title" parent="TextAppearance.Material3.HeadlineMedium">
+    <style name="TextAppearance.Teatro.Title" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:textSize">26sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/text_primary</item>
@@ -93,7 +93,7 @@
     </style>
 
     <!-- Texto sección -->
-    <style name="TextAppearance.Teatro.Section" parent="TextAppearance.Material3.LabelSmall">
+    <style name="TextAppearance.Teatro.Section" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textAllCaps">true</item>

@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:text="El Teatrillo"
             android:textColor="@color/text_primary"
-            android:textSize="50sp"
+            android:textSize="42sp"
             android:textStyle="bold"
             android:fontFamily="cursive"
             android:textAlignment="center"/>
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="Tu teatro, en tu bolsillo"
             android:textColor="@color/text_secondary"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="48dp"/>
 
@@ -46,7 +46,7 @@
             app:cardCornerRadius="110dp"
             app:cardBackgroundColor="@color/bg_card"
             app:cardElevation="0dp"
-            android:layout_marginBottom="48dp">
+            android:layout_marginBottom="40dp">
 
             <ImageView
                 android:id="@+id/imgTeatro"
@@ -119,7 +119,7 @@
         </androidx.cardview.widget.CardView>
 
         <!-- BOTÓN PRINCIPAL -->
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnStart"
             android:layout_width="match_parent"
             android:layout_height="58dp"
@@ -127,10 +127,15 @@
             android:textColor="@color/text_on_accent"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:backgroundTint="@color/accent"
-            app:cornerRadius="16dp"
+            android:backgroundTint="@color/accent"
             android:layout_marginBottom="12dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sin registro obligatorio · Pago seguro"
+            android:textColor="@color/text_hint"
+            android:textSize="12sp"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

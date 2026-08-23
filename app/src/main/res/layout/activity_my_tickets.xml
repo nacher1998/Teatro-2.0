@@ -46,19 +46,18 @@
         android:clipToPadding="false"/>
 
     <!-- Botón -->
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btnMyTicketsBack"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="60dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="28dp"
         android:layout_marginTop="8dp"
         android:text="Ver cartelera"
         android:textColor="@color/text_primary"
-        app:backgroundTint="@color/bg_card"
-        app:cornerRadius="16dp"
-        app:strokeColor="@color/border"
-        app:strokeWidth="1dp"/>
+        android:backgroundTint="@color/bg_card"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
 
 </LinearLayout>

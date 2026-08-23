@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="El teatrillo"
+            android:text="El Teatrillo"
             android:textColor="@color/accent"
             android:textSize="32sp"
             android:textStyle="bold"
@@ -117,7 +117,7 @@
             android:layout_marginBottom="12dp"/>
 
         <!-- Botón login -->
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -125,8 +125,7 @@
             android:textColor="@color/text_on_accent"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:backgroundTint="@color/accent"
-            app:cornerRadius="16dp"
+            android:backgroundTint="@color/accent"
             android:layout_marginBottom="16dp"/>
 
         <!-- Divider -->
@@ -142,17 +141,14 @@
         </LinearLayout>
 
         <!-- Botón registro -->
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnGoToRegister"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:text="Crear cuenta"
             android:textColor="@color/text_primary"
             android:textSize="15sp"
-            app:backgroundTint="@color/bg_card"
-            app:cornerRadius="16dp"
-            app:strokeColor="@color/border"
-            app:strokeWidth="1dp"/>
+            android:backgroundTint="@color/bg_card"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
