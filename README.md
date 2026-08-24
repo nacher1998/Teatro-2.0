@@ -1,4 +1,4 @@
-# 🎭 Ticket Teatro
+# 🎭 El teatrillo
 
 <p align="center">
   <img src="app/src/main/res/drawable/teatro.jpg" width="180" alt="Ticket Teatro logo"/>
@@ -20,7 +20,10 @@
 
 ## 📱 Capturas de pantalla
 
-> _Añade aquí capturas de las pantallas principales de la app._
+<img width="430" height="882" alt="image" src="https://github.com/user-attachments/assets/24288cd8-8d5b-4efc-b3bf-b2d0aef9ca45" />
+<img width="430" height="882" alt="image" src="https://github.com/user-attachments/assets/a24777e6-ebe7-4961-a369-a63eda043c37" />
+
+
 
 ---
 
@@ -139,11 +142,10 @@ app/src/main/
 
 | Nombre | GitHub |
 |---|---|
-| Nour Rekik | [@nacher1998](https://github.com/nacher1998) |
-| Ignacio Escobar Reche | — |
+| Ignacio Escobar Reche | [@nacher1998](https://github.com/nacher1998) |
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto ha sido desarrollado como **Proyecto Final de Grado** del ciclo de **Desarrollo de Aplicaciones Web (DAW)** — curso 2024/2025.
+Este proyecto ha sido desarrollado como **Proyecto Final de Grado** del ciclo de **Desarrollo de Aplicaciones Multiplataforma (DAM)** — curso 2024/2026.
